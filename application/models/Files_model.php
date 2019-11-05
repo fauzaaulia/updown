@@ -7,9 +7,4 @@ class Files_model extends CI_Model
    {
       return $this->db->get('file')->result_array();
    }
-
-   public function addFile()
-   {
-      #
-   }
 }

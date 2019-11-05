@@ -17,10 +17,12 @@ class Admin extends CI_Controller
 
       $data['title'] = 'Dashboard';
       $data['dec'] = 'good';
+      $data['totmem'] = $this->Member_model->getTotalMember();
+      $data['totfile'] = $this->Member_model->getTotalFile();
 
       $this->load->view('templates/adm-header', $data);
       $this->load->view('templates/adm-sidebar', $data);
-      $this->load->view('admin/dashboard');
+      $this->load->view('admin/dashboard', $data);
       $this->load->view('templates/adm-footer');
    }
 

@@ -8,6 +8,7 @@ class User extends CI_Controller
    {
       parent::__construct();
       $this->load->library('form_validation');
+      $this->load->model('Member_model', 'member');
    }
 
    public function index()
@@ -19,7 +20,13 @@ class User extends CI_Controller
 
       $this->load->view('templates/adm-header', $data);
       $this->load->view('templates/adm-sidebar', $data);
-      $this->load->view('user/profile');
+      $this->load->view('user/profile', $data);
       $this->load->view('templates/adm-footer');
+   }
+
+   public function updateprofil()
+   {
+      $this->load->model('Member_model', 'member');
+      $this->member->updateProfil();
    }
 }

@@ -12,9 +12,45 @@ class Ud extends CI_Controller
 
    public function upload()
    {
-      $this->load->view('templates/header');
-      $this->load->view('page/upload');
-      $this->load->view('templates/footer');
+      $this->form_validation->set_rules('nama', 'File Name', 'required|trim');
+      // $this->form_validation->set_rules('file', 'File', 'required|trim');
+
+      if ($this->form_validation->run() == false) {
+         $this->load->view('templates/header');
+         $this->load->view('page/upload');
+         $this->load->view('templates/footer');
+      } else {
+         $name = $this->input->post('nama');
+         $file = $_FILES['file'];
+
+         if ($file = '') {
+            # code...
+         } else {
+            // setting konfigurasi upload
+            $config['upload_path'] = './uploads/';
+            $config['max_size']      = '2048';
+            $config['allowed_types'] = 'gif|jpg|png|pdf|doc|exls|txt|rar|docx|';
+
+            // load library upload
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('file')) {
+               $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">ERROR: Gagal upload file!</div>');
+               redirect('ud/upload');
+            } else {
+               $file = $this->upload->data('file_name');
+            }
+         }
+
+         $data = array(
+            'nama_file'   => $name,
+            'file'   => $file,
+            'tanggal_upload' => time()
+         );
+
+         $this->db->insert('files', $data);
+         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">SUCCESS: Berhasil upload file!</div>');
+         redirect('ud/upload');
+      }
    }
 
    public function download()
