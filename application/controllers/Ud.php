@@ -3,6 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Ud extends CI_Controller
 {
+   public function __construct()
+   {
+      parent::__construct();
+      $this->load->library('form_validation');
+      $this->load->model('Files_model');
+   }
+
    public function index()
    {
       $this->load->view('templates/header');
@@ -28,8 +35,8 @@ class Ud extends CI_Controller
          } else {
             // setting konfigurasi upload
             $config['upload_path'] = './uploads/';
-            $config['max_size']      = '2048';
-            $config['allowed_types'] = 'gif|jpg|png|pdf|doc|exls|txt|rar|docx|';
+            $config['max_size']      = '20480';
+            $config['allowed_types'] = 'gif|jpg|png|pdf|doc|exls|txt|rar|docx|pptx|';
 
             // load library upload
             $this->load->library('upload', $config);
@@ -38,13 +45,17 @@ class Ud extends CI_Controller
                redirect('ud/upload');
             } else {
                $file = $this->upload->data('file_name');
+               $tipe = $this->upload->data('file_ext');
+               $size = $this->upload->data('file_size');
             }
          }
 
          $data = array(
-            'nama_file'   => $name,
-            'file'   => $file,
-            'tanggal_upload' => time()
+            'nama_file'       => $name,
+            'file'            => $file,
+            'tipe_file'       => $tipe,
+            'ukuran_file'     => $size,
+            'tanggal_upload'  => time()
          );
 
          $this->db->insert('files', $data);
@@ -55,8 +66,10 @@ class Ud extends CI_Controller
 
    public function download()
    {
+      $data['file'] = $this->Files_model->getAllFiles();
+
       $this->load->view('templates/header');
-      $this->load->view('page/download');
+      $this->load->view('page/download', $data);
       $this->load->view('templates/footer');
    }
 }

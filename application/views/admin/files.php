@@ -26,39 +26,6 @@
                            <button class="btn btn-danger btn-sm" type="button">Delete</button>
                         </td>
                      </tr>
-                     <tr>
-                        <td>2</td>
-                        <td>2019-08-13</td>
-                        <td>BAB5 AES2 Tugas Kriptografi</td>
-                        <td>xlsx</td>
-                        <td>53.66 KB</td>
-                        <td>
-                           <button class="btn btn-primary btn-sm" type="button">Edit</button>
-                           <button class="btn btn-danger btn-sm" type="button">Delete</button>
-                        </td>
-                     </tr>
-                     <tr>
-                        <td>3</td>
-                        <td>2019-08-13</td>
-                        <td>BAB5 AES2 Tugas Kriptografi</td>
-                        <td>xlsx</td>
-                        <td>53.66 KB</td>
-                        <td>
-                           <button class="btn btn-primary btn-sm" type="button">Edit</button>
-                           <button class="btn btn-danger btn-sm" type="button">Delete</button>
-                        </td>
-                     </tr>
-                     <tr>
-                        <td>4</td>
-                        <td>2019-08-13</td>
-                        <td>BAB5 AES2 Tugas Kriptografi</td>
-                        <td>xlsx</td>
-                        <td>53.66 KB</td>
-                        <td>
-                           <button class="btn btn-primary btn-sm" type="button">Edit</button>
-                           <button class="btn btn-danger btn-sm" type="button">Delete</button>
-                        </td>
-                     </tr>
                   </tbody>
                </table>
             </div>

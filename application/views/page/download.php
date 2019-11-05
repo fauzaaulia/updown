@@ -12,16 +12,26 @@
             </tr>
          </thead>
          <tbody>
-            <tr bgcolor="#fff">
-               <th scope="row">1</th>
-               <td>2019-09-30</td>
-               <td><a href="#">Dokumen ABCD</a></td>
-               <td>xlxs</td>
-               <td>56.33 KB</td>
-            </tr>
-            <tr bgcolor="#fff">
-               <td align="center" colspan="5">Tidak ada data!</td>
-            </tr>
+            <?php
+            if ($file) {
+               $i = 1;
+               foreach ($file as $f) : ?>
+                  <tr bgcolor="#fff">
+                     <th scope="row"><?= $i; ?></th>
+                     <td><?= date('Y-m-d', $f['tanggal_upload']); ?></td>
+                     <td><a href="<?= base_url('uploads/') . $f['file']; ?>"><?= $f['nama_file']; ?></a></td>
+                     <td><?= $f['tipe_file']; ?></td>
+                     <td><?= $f['ukuran_file']; ?>KB</td>
+                  </tr>
+                  <?php $i++; ?>
+               <?php endforeach ?>
+            <?php } else { ?>
+               <tr bgcolor="#fff">
+                  <td align="center" colspan="5">Tidak ada data!</td>
+               </tr>
+            <?php } ?>
+
+
          </tbody>
       </table>
    </div>
