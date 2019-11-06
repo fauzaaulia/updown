@@ -1,23 +1,53 @@
-   <!-- Sidebar menu-->
-   <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-   <aside class="app-sidebar">
-      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" height="48px" width="48px" src="<?= base_url('assets/images/profile/') . $user['images'] ?>" alt="User Image">
-         <div>
-            <p class="app-sidebar__user-name"><?= $user['name'] ?></p>
-            <p class="app-sidebar__user-designation">Frontend Developer</p>
-         </div>
-      </div>
-      <ul class="app-menu">
-         <li><a class="app-menu__item" href="<?= base_url('admin/'); ?>"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-         <li><a class="app-menu__item" href="<?= base_url('admin/files'); ?>"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Lits Files</span></a></li>
-         <li><a class="app-menu__item" href="<?= base_url('admin/member'); ?>"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">Lits Member</span></a></li>
-      </ul>
-   </aside>
+         <!-- QUERY MENU -->
+         <?php
+         $role_id = $this->session->userdata('role_id');
+         $queryMenu = "SELECT user_menu.id, menu
+                        FROM user_menu
+                        JOIN user_access_menu
+                        ON user_menu.id = user_access_menu.menu_id
+                        WHERE user_access_menu.role_id = $role_id
+                        ORDER BY user_access_menu.menu_id ASC
+                        ";
+         $menu = $this->db->query($queryMenu)->result_array();
 
-   <main class="app-content">
-      <div class="app-title">
-         <div>
-            <h1><i class="fa fa-dashboard"></i><?= $title ?></h1>
-            <p><?= $dec ?></p>
-         </div>
-      </div>
+         var_dump($menu);
+         ?>
+
+         <!-- Sidebar menu-->
+         <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+         <aside class="app-sidebar">
+            <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" height="48px" width="48px" src="<?= base_url('assets/images/profile/') . $user['images'] ?>" alt="User Image">
+               <div>
+                  <p class="app-sidebar__user-name"><?= $user['name'] ?></p>
+                  <p class="app-sidebar__user-designation">Frontend Developer</p>
+               </div>
+            </div>
+            <ul class="app-menu">
+
+               <!-- Looping Menu -->
+               <?php foreach ($menu as $m) : ?>
+                  <!-- Isi Sub Menu -->
+                  <?php
+                     $menuId = $m['id'];
+                     $querySubMenu = "SELECT *
+                                       FROM `user_sub_menu`
+                                       WHERE `menu_id` = $menuId
+                                       AND `is_active` = 1
+                                       ";
+                     $subMenu = $this->db->query($querySubMenu)->result_array();
+                     ?>
+
+                  <?php foreach ($subMenu as $sm) : ?>
+                     <li><a class="app-menu__item" href="<?= base_url($sm['url']); ?>"><i class="app-menu__icon <?= $sm['icon'] ?>"></i><span class="app-menu__label"><?= $sm['title'] ?></span></a></li>
+                  <?php endforeach; ?>
+               <?php endforeach; ?>
+            </ul>
+         </aside>
+
+         <main class="app-content">
+            <div class="app-title">
+               <div>
+                  <h1><i class="fa fa-dashboard"></i><?= $title ?></h1>
+                  <p><?= $dec ?></p>
+               </div>
+            </div>

@@ -72,4 +72,17 @@ class Ud extends CI_Controller
       $this->load->view('page/download', $data);
       $this->load->view('templates/footer');
    }
+
+   public function blocked()
+   {
+      $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+
+      $data['title'] = 'Blocked';
+      $data['dec'] = 'xxx';
+
+      $this->load->view('templates/adm-header', $data);
+      $this->load->view('templates/adm-sidebar', $data);
+      $this->load->view('page/blocked', $data);
+      $this->load->view('templates/adm-footer');
+   }
 }

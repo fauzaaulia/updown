@@ -33,28 +33,31 @@
          <div class="tab-pane fade" id="user-settings">
             <div class="tile user-settings">
                <h4 class="line-head">Settings</h4>
-               <form method="post" action="<?= base_url('user/updateProfil') ?>">
+               <form method="post" action="<?= base_url('user') ?>">
                   <div class="row mb-4">
 
                   </div>
                   <div class="row">
-                     <input class="form-control" name="name" value="<?= $user['id'] ?>" type="text" hidden>
+                     <input class="form-control" name="id" value="<?= $user['id'] ?>" type="text" hidden>
                      <div class="col-md-8 mb-4">
                         <label>Nama</label>
                         <input class="form-control" name="name" value="<?= $user['name'] ?>" type="text">
+                        <div class=" form-control-feedback text-danger"><?= form_error('name') ?></div>
                      </div>
                      <div class="col-md-8 mb-4">
                         <label>Username</label>
                         <input class="form-control" name="username" value="<?= $user['username'] ?>" type="text">
+                        <div class=" form-control-feedback text-danger"><?= form_error('username') ?></div>
                      </div>
                      <div class="col-md-8 mb-4">
                         <label>Email</label>
                         <input class="form-control" name="email" value="<?= $user['email'] ?>" type="email">
+                        <div class=" form-control-feedback text-danger"><?= form_error('email') ?></div>
                      </div>
                   </div>
                   <div class="row mb-10">
                      <div class="col-md-12">
-                        <a href="<?= base_url('user'); ?>" class="btn btn-primary" role="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</a>
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
                      </div>
                   </div>
                </form>

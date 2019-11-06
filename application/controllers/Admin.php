@@ -7,6 +7,7 @@ class Admin extends CI_Controller
    public function __construct()
    {
       parent::__construct();
+      is_logged_in();
       $this->load->library('form_validation');
       $this->load->model('Member_model');
       $this->load->model('Files_model');
@@ -24,20 +25,6 @@ class Admin extends CI_Controller
       $this->load->view('templates/adm-header', $data);
       $this->load->view('templates/adm-sidebar', $data);
       $this->load->view('admin/dashboard', $data);
-      $this->load->view('templates/adm-footer');
-   }
-
-   public function files()
-   {
-      $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-      $data['file'] = $this->Files_model->getAllFiles();
-
-      $data['title'] = 'Files';
-      $data['dec'] = 'good';
-
-      $this->load->view('templates/adm-header', $data);
-      $this->load->view('templates/adm-sidebar', $data);
-      $this->load->view('admin/files');
       $this->load->view('templates/adm-footer');
    }
 
