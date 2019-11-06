@@ -55,4 +55,20 @@ class User extends CI_Controller
       $this->load->model('Member_model', 'member');
       $this->member->updateProfil();
    }
+
+   public function fileDelete($id)
+   {
+      $data = $this->Files_model->getFileByID($id);
+      $file = './uploads/' . $data['file'];
+
+      if (is_readable($file) && unlink($file)) {
+         $this->db->delete('files', ['id' => $id]);
+
+         $this->session->set_flashdata('message', '<div class="bs-component"><div class="alert alert-dismissible alert-success"><strong>Well done!</strong> You successfully delete File.</div></div>');
+         redirect('user/files');
+      } else {
+         $this->session->set_flashdata('message', '<div class="bs-component"><div class="alert alert-dismissible alert-danger"><strong>ERROR!</strong> error to delete File.</div></div>');
+         redirect('user/files');
+      }
+   }
 }

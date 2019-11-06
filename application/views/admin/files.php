@@ -28,7 +28,7 @@
                               <td><?= $f['ukuran_file']; ?>KB</td>
                               <td>
                                  <a target="_blank" href="<?= base_url('uploads/') . $f['file']; ?>" class="btn btn-primary btn-sm" role="button">Open</a>
-                                 <a href="<?= base_url(); ?>admin/filedelete/<?= $f['id']; ?>" class="btn btn-danger btn-sm" role="button">Delete</a>
+                                 <a href="<?= base_url(); ?>user/filedelete/<?= $f['id']; ?>" class="btn btn-danger btn-sm" role="button">Delete</a>
                               </td>
                            </tr>
                            <?php $i++; ?>
