@@ -9,8 +9,6 @@
                         ORDER BY user_access_menu.menu_id ASC
                         ";
          $menu = $this->db->query($queryMenu)->result_array();
-
-         var_dump($menu);
          ?>
 
          <!-- Sidebar menu-->
@@ -19,7 +17,7 @@
             <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" height="48px" width="48px" src="<?= base_url('assets/images/profile/') . $user['images'] ?>" alt="User Image">
                <div>
                   <p class="app-sidebar__user-name"><?= $user['name'] ?></p>
-                  <p class="app-sidebar__user-designation">Frontend Developer</p>
+                  <p class="app-sidebar__user-designation"><?= $user['role'] ?></p>
                </div>
             </div>
             <ul class="app-menu">

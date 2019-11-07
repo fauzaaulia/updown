@@ -15,7 +15,7 @@ class Admin extends CI_Controller
 
    public function index()
    {
-      $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+      $data['user'] = $this->Member_model->getUserByID();
 
       $data['title'] = 'Dashboard';
       $data['dec'] = 'good';
@@ -30,7 +30,7 @@ class Admin extends CI_Controller
 
    public function member()
    {
-      $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+      $data['user'] = $this->Member_model->getUserByID();
       $data['member'] = $this->Member_model->getAllMember();
 
       $data['title'] = 'Member';

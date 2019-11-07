@@ -75,7 +75,8 @@ class Ud extends CI_Controller
 
    public function blocked()
    {
-      $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+      $this->load->model('Member_model', 'member');
+      $data['user'] = $this->member->getUserByID();
 
       $data['title'] = 'Blocked';
       $data['dec'] = 'xxx';

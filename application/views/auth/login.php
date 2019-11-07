@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                <div class="utility">
-                  <p class="semibold-text mb-2"><a href="<?= base_url('auth/register') ?>">Create new account, </a><a href="#" data-toggle="flip">or Forgot Password ?</a></p>
+                  <a href="#" data-toggle="flip">Forgot Password ?</a></p>
                </div>
             </div>
             <div class="form-group btn-container">

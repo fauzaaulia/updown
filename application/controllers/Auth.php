@@ -65,14 +65,6 @@ class Auth extends CI_Controller
       }
    }
 
-   public function register()
-   {
-      $this->load->view('templates/auth-header');
-      $this->load->view('auth/register');
-      $this->load->view('templates/auth-footer');
-   }
-
-
    public function logout()
    {
       $this->session->unset_userdata('username');

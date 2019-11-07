@@ -15,7 +15,7 @@ class User extends CI_Controller
 
    public function index()
    {
-      $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+      $data['user'] = $this->member->getUserByID();
 
       $this->form_validation->set_rules('username', 'Username', 'required|trim');
       $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
@@ -38,7 +38,7 @@ class User extends CI_Controller
 
    public function files()
    {
-      $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+      $data['user'] = $this->member->getUserByID();
       $data['file'] = $this->Files_model->getAllFiles();
 
       $data['title'] = 'Files';

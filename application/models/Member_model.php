@@ -8,6 +8,18 @@ class Member_model extends CI_Model
       return $this->db->get('user')->result_array();
    }
 
+   public function getUserByID()
+   {
+      $username = $this->session->userdata('username');
+      $query = "SELECT *
+               FROM user
+               JOIN user_role
+               ON user.role_id = user_role.id
+               WHERE user.username = '$username'
+               ";
+      return $this->db->query($query)->row_array();
+   }
+
    public function getTotalMember()
    {
       $query = "SELECT count(*) AS total
