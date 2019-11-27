@@ -19,7 +19,7 @@
 <div class="row">
    <div class="col-md-6">
       <div class="tile">
-         <h3 class="tile-title">Upload Delete</h3>
+         <h3 class="tile-title">Last week upload</h3>
          <div class="embed-responsive embed-responsive-16by9">
             <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
          </div>

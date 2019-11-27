@@ -15,14 +15,14 @@
 <script type="text/javascript">
    $('#sampleTable').DataTable();
 </script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.2/dist/Chart.min.js"></script>
+
 <script type="text/javascript">
    var data_hari = [];
    var data_jml = [];
 
    $.post("<?= base_url('admin/getDataUpload') ?>",
       function(data) {
-         var obj = JSON.parse(data, function(key, value));
+         var obj = JSON.parse(data);
          $.each(obj, function(key, value) {
             data_jml.push(value.total);
             data_hari.push(value.hari_upload);
@@ -32,13 +32,13 @@
             labels: data_hari,
             datasets: [{
                label: "Upload",
-               data: data_jml,
                fillColor: "rgba(151,187,205,0.2)",
                strokeColor: "rgba(151,187,205,1)",
                pointColor: "rgba(151,187,205,1)",
                pointStrokeColor: "#fff",
                pointHighlightFill: "#fff",
-               pointHighlightStroke: "rgba(151,187,205,1)"
+               pointHighlightStroke: "rgba(151,187,205,1)",
+               data: data_jml
             }]
          };
 
