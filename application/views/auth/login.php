@@ -4,7 +4,7 @@
    </section>
    <section class="login-content">
       <div class="logo">
-         <h1>Up&Down</h1>
+         <h1><a style="color:white" href="<?= base_url(); ?>">Up&Down</a></h1>
       </div>
       <div class="login-box">
          <form class="login-form" method="post" action="<?= base_url('auth') ?>">

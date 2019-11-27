@@ -39,6 +39,8 @@
                      <li><a class="app-menu__item" href="<?= base_url($sm['url']); ?>"><i class="app-menu__icon <?= $sm['icon'] ?>"></i><span class="app-menu__label"><?= $sm['title'] ?></span></a></li>
                   <?php endforeach; ?>
                <?php endforeach; ?>
+
+
             </ul>
          </aside>
 

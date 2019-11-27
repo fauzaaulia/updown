@@ -12,16 +12,25 @@ class Auth extends CI_Controller
 
    public function index()
    {
-      $this->form_validation->set_rules('username', 'Username', 'required|trim');
-      $this->form_validation->set_rules('password', 'Password', 'required|trim');
-
-      if ($this->form_validation->run() == false) {
-         $this->load->view('templates/auth-header');
-         $this->load->view('auth/login');
-         $this->load->view('templates/auth-footer');
+      if ($this->session->userdata('username')) {
+         $user = $this->session->userdata('role_id');
+         if ($user['role_id'] == 1) {
+            redirect('admin');
+         } else {
+            redirect('user');
+         }
       } else {
-         //validasi sukses
-         $this->_login();
+         $this->form_validation->set_rules('username', 'Username', 'required|trim');
+         $this->form_validation->set_rules('password', 'Password', 'required|trim');
+
+         if ($this->form_validation->run() == false) {
+            $this->load->view('templates/auth-header');
+            $this->load->view('auth/login');
+            $this->load->view('templates/auth-footer');
+         } else {
+            //validasi sukses
+            $this->_login();
+         }
       }
    }
 
@@ -41,6 +50,7 @@ class Auth extends CI_Controller
                $data = [
                   'username' => $user['username'],
                   'role_id' => $user['role_id'],
+                  'id' => $user['id'],
                ];
                $this->session->set_userdata($data);
                if ($user['role_id'] == 1) {

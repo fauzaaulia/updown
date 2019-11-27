@@ -34,7 +34,7 @@ class Member_model extends CI_Model
       return $this->db->query($query)->result_array();
    }
 
-   public function updateProfil()
+   public function updateprofil()
    {
       $data = [
          'id' => $this->input->post('id'),

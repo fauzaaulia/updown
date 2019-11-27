@@ -22,7 +22,7 @@
                         foreach ($file as $f) : ?>
                            <tr>
                               <th scope="row"><?= $i; ?></th>
-                              <td><?= date('Y-m-d', $f['tanggal_upload']); ?></td>
+                              <td><?= $f['tanggal_upload']; ?></td>
                               <td><?= $f['nama_file']; ?></a></td>
                               <td><?= $f['tipe_file']; ?></td>
                               <td><?= $f['ukuran_file']; ?>KB</td>
