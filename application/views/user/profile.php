@@ -1,44 +1,50 @@
 <div class="row user">
+
    <div class="col-md-12">
       <div class="profile">
          <div class="info"><img class="user-img" height="110px" width="110px" src="<?= base_url('assets/images/profile/') . $user['images'] ?>">
             <h4><?= $user['name'] ?></h4>
-            <p>FrontEnd Developer</p>
+            <p><?= $user['role'] ?></p>
          </div>
          <div class="cover-image"></div>
       </div>
    </div>
+
+   <div class="col-md-12 mt-5">
+      <?= $this->session->flashdata('message'); ?>
+   </div>
+
    <div class="col-md-3">
       <div class="tile p-0">
          <ul class="nav flex-column nav-tabs user-tabs">
-            <li class="nav-item"><a class="nav-link active" href="#user-timeline" data-toggle="tab">Timeline</a></li>
-            <li class="nav-item"><a class="nav-link" href="#user-settings" data-toggle="tab">Settings</a></li>
+            <li class="nav-item"><a class="nav-link active" href="#user-timeline" data-toggle="tab">Profil</a></li>
+            <li class="nav-item"><a class="nav-link" href="#user-settings" data-toggle="tab">Edit Profil</a></li>
          </ul>
       </div>
    </div>
+
    <div class="col-md-9">
       <div class="tab-content">
+
          <div class="tab-pane active" id="user-timeline">
             <div class="timeline-post">
                <div class="post-media"><a href="#"><img height="150px" width="150px" src="<?= base_url('assets/images/profile/') . $user['images'] ?>"></a>
                   <div class="content">
                      <h2><a href="#"><?= $user['name'] ?></a></h2>
-                     <h5>Role : <span class="badge badge-pill badge-warning"><?= $user['role_id']; ?></span></h5>
+                     <h5>Role : <span class="badge badge-pill badge-warning"><?= $user['role']; ?></span></h5>
                      <h5>E-mail : <span class="badge badge-pill badge-danger"><?= $user['email']; ?></span></h5>
                      <h5>Username : <span class="badge badge-pill badge-success"><?= $user['username']; ?></span></h5>
                   </div>
                </div>
             </div>
          </div>
+
          <div class="tab-pane fade" id="user-settings">
             <div class="tile user-settings">
-               <h4 class="line-head">Settings</h4>
-               <form method="post" action="<?= base_url('user') ?>">
-                  <div class="row mb-4">
-
-                  </div>
+               <h4 class="line-head">Edit Profil</h4>
+               <form method="post" action="<?= base_url('user/updateprofil') ?>">
+                  <input class="form-control" name="id" value="<?= $user['id'] ?>" type="text" hidden>
                   <div class="row">
-                     <input class="form-control" name="id" value="<?= $user['id'] ?>" type="text" hidden>
                      <div class="col-md-8 mb-4">
                         <label>Nama</label>
                         <input class="form-control" name="name" value="<?= $user['name'] ?>" type="text">
@@ -63,6 +69,8 @@
                </form>
             </div>
          </div>
+
       </div>
    </div>
+
 </div>

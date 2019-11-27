@@ -47,6 +47,16 @@
             <li class="nav-item">
                <a class="nav-link js-scroll-trigger" href="<?= base_url('ud/download') ?>">Download</a>
             </li>
+            <?php
+            if ($this->session->userdata('username')) { ?>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="<?= base_url('auth/logout') ?>">Logout</a>
+               </li>
+            <?php } else { ?>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="<?= base_url('auth') ?>">Login</a>
+               </li>
+            <?php } ?>
          </ul>
       </div>
    </nav>

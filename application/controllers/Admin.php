@@ -17,7 +17,7 @@ class Admin extends CI_Controller
    {
       $data['user'] = $this->Member_model->getUserByID();
 
-      $data['title'] = 'Dashboard';
+      $data['title'] = ' Dashboard';
       $data['dec'] = 'good';
       $data['totmem'] = $this->Member_model->getTotalMember();
       $data['totfile'] = $this->Member_model->getTotalFile();
@@ -28,12 +28,21 @@ class Admin extends CI_Controller
       $this->load->view('templates/adm-footer');
    }
 
+   public function getDataUpload()
+   {
+      $this->load->model('Chart_model', 'chart');
+      $data = $this->chart->getDataUpload();
+      echo json_encode($data);
+      // print_r($cek);
+      // exit();
+   }
+
    public function member()
    {
       $data['user'] = $this->Member_model->getUserByID();
       $data['member'] = $this->Member_model->getAllMember();
 
-      $data['title'] = 'Member';
+      $data['title'] = ' Member';
       $data['dec'] = 'good';
 
       $this->load->view('templates/adm-header', $data);
@@ -55,9 +64,9 @@ class Admin extends CI_Controller
       $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
       if ($this->form_validation->run() == false) {
-         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+         $data['user'] = $this->Member_model->getUserByID();
 
-         $data['title'] = 'Add Member';
+         $data['title'] = ' Add Member';
          $data['dec'] = 'good';
 
          $this->load->view('templates/adm-header', $data);

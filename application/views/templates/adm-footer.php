@@ -8,11 +8,44 @@
 <!-- The javascript plugin to display page loading on top-->
 <script src="<?= base_url('assets/'); ?>js/plugins/pace.min.js"></script>
 <!-- Page specific javascripts-->
+<script type="text/javascript" src="<?= base_url('assets/'); ?>js/plugins/chart.js"></script>
 <!-- Data table plugin-->
 <script type="text/javascript" src="<?= base_url('assets/'); ?>js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="<?= base_url('assets/'); ?>js/plugins/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript">
    $('#sampleTable').DataTable();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.2/dist/Chart.min.js"></script>
+<script type="text/javascript">
+   var data_hari = [];
+   var data_jml = [];
+
+   $.post("<?= base_url('admin/getDataUpload') ?>",
+      function(data) {
+         var obj = JSON.parse(data, function(key, value));
+         $.each(obj, function(key, value) {
+            data_jml.push(value.total);
+            data_hari.push(value.hari_upload);
+         });
+
+         var data = {
+            labels: data_hari,
+            datasets: [{
+               label: "Upload",
+               data: data_jml,
+               fillColor: "rgba(151,187,205,0.2)",
+               strokeColor: "rgba(151,187,205,1)",
+               pointColor: "rgba(151,187,205,1)",
+               pointStrokeColor: "#fff",
+               pointHighlightFill: "#fff",
+               pointHighlightStroke: "rgba(151,187,205,1)"
+            }]
+         };
+
+         var ctxl = $("#lineChartDemo").get(0).getContext("2d");
+         var lineChart = new Chart(ctxl).Line(data);
+
+      });
 </script>
 
 <!-- Google analytics script-->

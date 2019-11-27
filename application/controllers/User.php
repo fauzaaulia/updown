@@ -22,7 +22,7 @@ class User extends CI_Controller
       $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
 
       if ($this->form_validation->run() == false) {
-         $data['title'] = 'My Profil';
+         $data['title'] = ' My Profil';
          $data['dec'] = 'good';
 
          $this->load->view('templates/adm-header', $data);
@@ -31,7 +31,8 @@ class User extends CI_Controller
          $this->load->view('templates/adm-footer');
       } else {
          $this->load->model('Member_model');
-         $this->Member_model->updateProfil();
+         $this->Member_model->updateprofil();
+         $this->session->set_flashdata('message', '<div class="bs-component"><div class="alert alert-dismissible alert-success"><strong>Well done!</strong> You successfully update Profil.</div></div>');
          redirect('user');
       }
    }
@@ -41,7 +42,7 @@ class User extends CI_Controller
       $data['user'] = $this->member->getUserByID();
       $data['file'] = $this->Files_model->getAllFiles();
 
-      $data['title'] = 'Files';
+      $data['title'] = ' Files';
       $data['dec'] = 'good';
 
       $this->load->view('templates/adm-header', $data);
@@ -52,8 +53,10 @@ class User extends CI_Controller
 
    public function updateprofil()
    {
-      $this->load->model('Member_model', 'member');
-      $this->member->updateProfil();
+      $this->load->model('Member_model');
+      $this->Member_model->updateprofil();
+      $this->session->set_flashdata('message', '<div class="bs-component"><div class="alert alert-dismissible alert-success"><strong>Well done!</strong> You successfully update Profil.</div></div>');
+      redirect('user');
    }
 
    public function fileDelete($id)

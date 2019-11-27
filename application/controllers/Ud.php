@@ -50,12 +50,19 @@ class Ud extends CI_Controller
             }
          }
 
+         date_default_timezone_set('Asia/Jakarta');
+         $hari = date('l');
+         $tgl = date('Y-m-d');
+         $jam = date('H:i') . " WIB";
+
          $data = array(
             'nama_file'       => $name,
             'file'            => $file,
             'tipe_file'       => $tipe,
             'ukuran_file'     => $size,
-            'tanggal_upload'  => time()
+            'hari_upload'     => $hari,
+            'tanggal_upload'  => $tgl,
+            'jam_upload'      => $jam
          );
 
          $this->db->insert('files', $data);
