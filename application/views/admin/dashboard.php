@@ -21,7 +21,15 @@
       <div class="tile">
          <h3 class="tile-title">Last week upload</h3>
          <div class="embed-responsive embed-responsive-16by9">
-            <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
+            <canvas class="embed-responsive-item" id="lineChartData"></canvas>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-6">
+      <div class="tile">
+         <h3 class="tile-title">Type Data n%</h3>
+         <div class="embed-responsive embed-responsive-16by9">
+            <canvas class="embed-responsive-item" id="pieChartData"></canvas>
          </div>
       </div>
    </div>

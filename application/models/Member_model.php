@@ -5,7 +5,11 @@ class Member_model extends CI_Model
 
    public function getAllMember()
    {
-      return $this->db->get('user')->result_array();
+      $query = "SELECT *
+               FROM user
+               WHERE role_id = 2
+               ";
+      return $this->db->query($query)->result_array();
    }
 
    public function getUserByID()
@@ -23,14 +27,9 @@ class Member_model extends CI_Model
    public function getTotalMember()
    {
       $query = "SELECT count(*) AS total
-                  FROM user";
-      return $this->db->query($query)->result_array();
-   }
-
-   public function getTotalFile()
-   {
-      $query = "SELECT count(*) AS total
-                  FROM files";
+                  FROM user
+                  WHERE role_id = 2
+                  ";
       return $this->db->query($query)->result_array();
    }
 

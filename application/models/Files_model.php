@@ -15,4 +15,11 @@ class Files_model extends CI_Model
    {
       return $this->db->get_where('files', ['id' => $id])->row_array();
    }
+
+   public function getTotalFile()
+   {
+      $query = "SELECT count(*) AS total
+                  FROM files";
+      return $this->db->query($query)->result_array();
+   }
 }

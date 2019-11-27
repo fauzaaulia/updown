@@ -15,23 +15,34 @@ class Admin extends CI_Controller
 
    public function index()
    {
+      $this->load->model('Chart_model', 'chart');
       $data['user'] = $this->Member_model->getUserByID();
 
       $data['title'] = ' Dashboard';
       $data['dec'] = 'good';
       $data['totmem'] = $this->Member_model->getTotalMember();
-      $data['totfile'] = $this->Member_model->getTotalFile();
+      $data['totfile'] = $this->Files_model->getTotalFile();
+      $data['dtype'] = $this->chart->getTypeFile();
 
       $this->load->view('templates/adm-header', $data);
       $this->load->view('templates/adm-sidebar', $data);
       $this->load->view('admin/dashboard', $data);
-      $this->load->view('templates/adm-footer');
+      $this->load->view('templates/adm-footer', $data);
    }
 
    public function getDataUpload()
    {
       $this->load->model('Chart_model', 'chart');
       $data = $this->chart->getDataUpload();
+      echo json_encode($data);
+      // print_r($cek);
+      // exit();
+   }
+
+   public function getTypeFile()
+   {
+      $this->load->model('Chart_model', 'chart');
+      $data = $this->chart->getTypeFile();
       echo json_encode($data);
       // print_r($cek);
       // exit();
