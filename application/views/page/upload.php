@@ -2,7 +2,7 @@
    <div class="w-100">
       <h2 class="mb-3">Upload File</h2>
       <div class="alert alert-warning" role="alert">
-         Upload file Anda dengan melengkapi form di bawah ini. Semua ekstensi file bisa diupload dan besar file (file size) maksimal hanya 10 MB.
+         Upload file Anda dengan melengkapi form di bawah ini. Ekstensi file yang diperbolahkan <b>( .gif | .jpg | .png | .pdf | .doc | .exls | .txt | .rar | .docx | .doc | .pptx | .aia | .zip | .eps | .ai | .psd | .cdr | .ino | .swf )</b> dan besar file (file size) maksimal hanya <b>5MB</b>.
       </div>
       <?= $this->session->flashdata('message'); ?>
 
