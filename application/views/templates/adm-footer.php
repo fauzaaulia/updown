@@ -42,10 +42,23 @@
             }]
          };
 
-         var ctxl = $("#lineChartDemo").get(0).getContext("2d");
+         var ctxl = $("#lineChartData").get(0).getContext("2d");
          var lineChart = new Chart(ctxl).Line(data);
-
       });
+</script>
+
+<script type="text/javascript">
+   var pdata = [
+      <?php
+      foreach ($dtype as $dt) {
+         $color = substr(md5(mt_rand()), 0, 6);
+         echo '{ value:' . round($dt['total'] / $totfile['0']['total'] * 100) . ',' . 'color: "#' . $color . '",' . 'highlight: "#' . $color . '",' . 'label: "' . $dt['tipe_file'] . '"' . '},';
+      }
+      ?>
+   ]
+
+   var ctxp = $("#pieChartData").get(0).getContext("2d");
+   var pieChart = new Chart(ctxp).Pie(pdata);
 </script>
 
 <!-- Google analytics script-->
