@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Nov 2019 pada 07.48
+-- Waktu pembuatan: 28 Nov 2019 pada 06.33
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.4
 
@@ -30,7 +30,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `files` (
   `id` int(11) NOT NULL,
-  `tanggal_upload` int(11) NOT NULL,
+  `hari_upload` varchar(15) NOT NULL,
+  `tanggal_upload` varchar(20) NOT NULL,
+  `jam_upload` varchar(10) NOT NULL,
   `nama_file` varchar(128) NOT NULL,
   `tipe_file` varchar(128) NOT NULL,
   `ukuran_file` varchar(128) NOT NULL,
@@ -41,9 +43,24 @@ CREATE TABLE `files` (
 -- Dumping data untuk tabel `files`
 --
 
-INSERT INTO `files` (`id`, `tanggal_upload`, `nama_file`, `tipe_file`, `ukuran_file`, `file`) VALUES
-(12, 1573001004, 'me', '.JPG', '772.77', 'IMG_9405.JPG'),
-(13, 1573091127, 'des', '.docx', '11.75', 'Tugas_DES.docx');
+INSERT INTO `files` (`id`, `hari_upload`, `tanggal_upload`, `jam_upload`, `nama_file`, `tipe_file`, `ukuran_file`, `file`) VALUES
+(15, 'Tuesday', '2019-11-26', '19:59 WIB', 'GL', '.png', '165.54', 'Garuda_Legend-01-01.png'),
+(16, 'Tuesday', '2019-11-26', '20:01 WIB', 'kuis', '.jpg', '146.1', 'aplikasi_kuis.jpg'),
+(17, 'Wednesday', '2019-11-27', '20:04 WIB', 'dian', '.jpg', '1395.33', 'Dian.jpg'),
+(18, 'Wednesday', '2019-11-27', '20:04 WIB', 'Me', '.JPG', '772.77', 'IMG_9405.JPG'),
+(19, 'Monday', '2019-11-25', '22:13 WIB', 'smanda', '.png', '271.06', 'Logo-smanda_SMA_N_2_Semarang_Hd.png'),
+(20, 'Sunday', '2019-11-24', '22:13 WIB', 'syukuran', '.png', '702.83', 'tasyakuran_pernikahan2-01.png'),
+(21, 'Sunday', '2019-11-24', '22:13 WIB', 'jb', '.png', '245.77', 'Untitled-1_copy_-_Copy.png'),
+(22, 'Sunday', '2019-11-24', '22:13 WIB', 'pohon', '.jpg', '31.38', 'free-vector-polygonal-tree.jpg'),
+(23, 'Saturday', '2019-11-23', '22:16 WIB', 'k1', '.JPG', '1167.83', 'kombat_samanda_1.JPG'),
+(24, 'Friday', '2019-11-22', '22:16 WIB', 'k1-2', '.JPG', '822.64', 'kombat_samanda_1m.JPG'),
+(25, 'Thursday', '2019-11-21', '22:16 WIB', 'k2', '.JPG', '1239.2', 'kombat_samanda_2.JPG'),
+(26, 'Wednesday', '2019-11-20', '22:16 WIB', 'k2m', '.JPG', '854.62', 'kombat_samanda_2m.JPG'),
+(27, 'Tuesday', '2019-11-19', '22:17 WIB', 'kotak', '.png', '11.65', 'kotak-suara.png'),
+(28, 'Monday', '2019-11-18', '22:17 WIB', 'hoax', '.jpg', '45.57', 'warning-hoax-logo_8163-25.jpg'),
+(29, 'Thursday', '2019-11-28', '02:44 WIB', 'web pro', '.pdf', '118.85', 'Web_Programming.pdf'),
+(30, 'Thursday', '2019-11-28', '02:45 WIB', 'youtube-logo', '.png', '112.88', 'youtube_PNG15.png'),
+(31, 'Thursday', '2019-11-28', '11:04 WIB', 'mmt', '.png', '1596.13', 'mmt-01.png');
 
 -- --------------------------------------------------------
 
@@ -69,7 +86,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `name`, `username`, `email`, `password`, `role_id`, `images`, `is_active`, `date_created`) VALUES
 (5, 'Ahmad Fauza Aulia', 'fauzaaulia', 'fauzaauliia@gmail.com', '$2y$10$YAu/xa52dcenCosxsHdLGuwfTpIOBZFqPogcQ9ILuWlFZneQb/lqu', 1, 'default.JPG', 1, 1572025996),
-(7, 'Aa', 'aa', 'aa@aa.aa', '$2y$10$bTAGncRUzJLcxdAJczv79ONkBlj5tjjTeshgCabyorxIIc8ruT/16', 2, 'default.JPG', 1, 1572442677);
+(7, 'Aa', 'aa', 'aa@aa.aa', '$2y$10$bTAGncRUzJLcxdAJczv79ONkBlj5tjjTeshgCabyorxIIc8ruT/16', 2, 'default.JPG', 1, 1572442677),
+(9, 'Ahmad Fauza Aulia', 'fauzaauliaa', 'a_fauza@ymail.com', '$2y$10$q/PugZflntdnOjWZrC.fgOT.8eVjW5SzbiTpUZFo1xt68qwBZdnze', 2, 'default.JPG', 1, 1574314836),
+(10, 'Admin', 'admin', 'admin@admin.id', '$2y$10$jYvKOGTzUAfgdZd7dPI29e4fKY0jHr7o1urTpyl4b1d9v2zlVMNh6', 1, 'default.JPG', 1, 1574918504),
+(11, 'User', 'user', 'user@user.id', '$2y$10$34CVH7bgQYrbkdESRuezceZtUHhHWcE8Lu2Z7iMDekLeBBLAWXXWS', 2, 'default.JPG', 1, 1574918528);
 
 -- --------------------------------------------------------
 
@@ -203,13 +223,13 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT untuk tabel `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
