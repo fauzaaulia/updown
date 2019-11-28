@@ -35,8 +35,8 @@ class Ud extends CI_Controller
          } else {
             // setting konfigurasi upload
             $config['upload_path'] = './uploads/';
-            $config['max_size']      = '20480';
-            $config['allowed_types'] = 'gif|jpg|png|pdf|doc|exls|txt|rar|docx|pptx|';
+            $config['max_size']      = '102480';
+            $config['allowed_types'] = 'gif|jpg|png|pdf|doc|exls|txt|rar|docx|doc|pptx|aia|zip|eps|ai|psd|cdr|ino|swf|';
 
             // load library upload
             $this->load->library('upload', $config);

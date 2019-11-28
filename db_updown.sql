@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Nov 2019 pada 17.02
+-- Waktu pembuatan: 28 Nov 2019 pada 06.33
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.4
 
@@ -57,7 +57,11 @@ INSERT INTO `files` (`id`, `hari_upload`, `tanggal_upload`, `jam_upload`, `nama_
 (25, 'Thursday', '2019-11-21', '22:16 WIB', 'k2', '.JPG', '1239.2', 'kombat_samanda_2.JPG'),
 (26, 'Wednesday', '2019-11-20', '22:16 WIB', 'k2m', '.JPG', '854.62', 'kombat_samanda_2m.JPG'),
 (27, 'Tuesday', '2019-11-19', '22:17 WIB', 'kotak', '.png', '11.65', 'kotak-suara.png'),
-(28, 'Monday', '2019-11-18', '22:17 WIB', 'hoax', '.jpg', '45.57', 'warning-hoax-logo_8163-25.jpg');
+(28, 'Monday', '2019-11-18', '22:17 WIB', 'hoax', '.jpg', '45.57', 'warning-hoax-logo_8163-25.jpg'),
+(29, 'Thursday', '2019-11-28', '02:44 WIB', 'web pro', '.pdf', '118.85', 'Web_Programming.pdf'),
+(30, 'Thursday', '2019-11-28', '02:45 WIB', 'youtube-logo', '.png', '112.88', 'youtube_PNG15.png'),
+(31, 'Thursday', '2019-11-28', '11:04 WIB', 'mmt', '.png', '1596.13', 'mmt-01.png');
+
 
 -- --------------------------------------------------------
 
@@ -84,7 +88,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `name`, `username`, `email`, `password`, `role_id`, `images`, `is_active`, `date_created`) VALUES
 (5, 'Ahmad Fauza Aulia', 'fauzaaulia', 'fauzaauliia@gmail.com', '$2y$10$YAu/xa52dcenCosxsHdLGuwfTpIOBZFqPogcQ9ILuWlFZneQb/lqu', 1, 'default.JPG', 1, 1572025996),
 (7, 'Aa', 'aa', 'aa@aa.aa', '$2y$10$bTAGncRUzJLcxdAJczv79ONkBlj5tjjTeshgCabyorxIIc8ruT/16', 2, 'default.JPG', 1, 1572442677),
-(9, 'Ahmad Fauza Aulia', 'fauzaauliaa', 'a_fauza@ymail.com', '$2y$10$q/PugZflntdnOjWZrC.fgOT.8eVjW5SzbiTpUZFo1xt68qwBZdnze', 2, '', 1, 1574314836);
+(9, 'Ahmad Fauza Aulia', 'fauzaauliaa', 'a_fauza@ymail.com', '$2y$10$q/PugZflntdnOjWZrC.fgOT.8eVjW5SzbiTpUZFo1xt68qwBZdnze', 2, 'default.JPG', 1, 1574314836),
+(10, 'Admin', 'admin', 'admin@admin.id', '$2y$10$jYvKOGTzUAfgdZd7dPI29e4fKY0jHr7o1urTpyl4b1d9v2zlVMNh6', 1, 'default.JPG', 1, 1574918504),
+(11, 'User', 'user', 'user@user.id', '$2y$10$34CVH7bgQYrbkdESRuezceZtUHhHWcE8Lu2Z7iMDekLeBBLAWXXWS', 2, 'default.JPG', 1, 1574918528);
 
 -- --------------------------------------------------------
 
@@ -218,13 +224,12 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT untuk tabel `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
