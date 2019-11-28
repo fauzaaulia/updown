@@ -62,6 +62,7 @@ INSERT INTO `files` (`id`, `hari_upload`, `tanggal_upload`, `jam_upload`, `nama_
 (30, 'Thursday', '2019-11-28', '02:45 WIB', 'youtube-logo', '.png', '112.88', 'youtube_PNG15.png'),
 (31, 'Thursday', '2019-11-28', '11:04 WIB', 'mmt', '.png', '1596.13', 'mmt-01.png');
 
+
 -- --------------------------------------------------------
 
 --
@@ -224,7 +225,6 @@ ALTER TABLE `user_sub_menu`
 --
 ALTER TABLE `files`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
-
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
