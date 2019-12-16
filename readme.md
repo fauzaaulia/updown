@@ -14,19 +14,6 @@ Sistem UptoDown dibuat menggunakan :
 
 You can visit [http://uptodown.fauza.id/] (http://uptodown.fauza.id/).
 
-> You can use account bellow to singin.
-
-**for admin:**
-```
-username : admin
-password : Admin
-```
-**for user:**
-```
-username : user
-password : User
-```
-
 ##Thanks
 
 Thank you :)
